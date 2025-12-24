@@ -3,6 +3,8 @@
 ## 1. Global Environment (Docker)
 The entire system must run in a dockerized environment. Use `docker-compose.yml`.
 
+**IMPORTANT:** No local installation of JDK, Go, Maven, or any development tools is required. All development, building, and execution happens inside Docker containers.
+
 ### Infrastructure Versions
 * **Kafka:** `confluentinc/cp-kafka:7.6.0` (Compatible with standard Kafka clients).
 * **Zookeeper:** `confluentinc/cp-zookeeper:7.6.0` (Required for this version of Kafka).
@@ -15,18 +17,37 @@ The entire system must run in a dockerized environment. Use `docker-compose.yml`
 ## 2. Service 1: SMS Sender (Java)
 
 ### Core Stack
-* **Language:** Java 17 (LTS).
-* **Framework:** Spring Boot 3.2.3.
+* **Language:** Java 21 (LTS).
+* **Framework:** Spring Boot 3.5.9.
 * **Build Tool:** Maven 3.9+.
+* **Configuration Format:** YAML (`application.yml`)
 * **Execution:** Will run in a Docker container.
 
+### Configuration File (application.yml)
+Java service configuration should be managed via `src/main/resources/application.yml`. Key configurations include:
+* **Server Port:** `server.port: 8080`
+* **Kafka Bootstrap Servers:** `spring.kafka.bootstrap-servers: kafka:9092`
+* **Redis Connection:** `spring.data.redis.host: redis`, `spring.data.redis.port: 6379`
+* **Application Name:** `spring.application.name: sms-sender`
+
 ### Dependency Requirements (pom.xml)
-1.  **Web:** `spring-boot-starter-web` (For creating REST endpoints).
-2.  **Kafka:** `spring-kafka` (For producing events).
-3.  **Redis:** `spring-boot-starter-data-redis` (For Block List checks).
-4.  **HTTP Client:** `spring-boot-starter-webflux` (For `WebClient`) OR standard `RestTemplate`. *Preference: WebClient for better non-blocking support, though RestTemplate is acceptable per requirements*.
-5.  **Utilities:** `lombok` (For boilerplate reduction), `jackson-databind` (JSON serialization).
-6.  **Testing:** `spring-boot-starter-test`.
+
+**Dependencies to Add from Spring Initializr:**
+1.  **Spring Web** - For creating REST endpoints (`spring-boot-starter-web`)
+2.  **Spring for Apache Kafka** - For producing events (`spring-kafka`)
+3.  **Spring Data Redis (Access+Driver)** - For Block List checks (`spring-boot-starter-data-redis`)
+4.  **Spring Reactive Web** - For WebClient HTTP client (`spring-boot-starter-webflux`)
+5.  **Lombok** - For boilerplate reduction
+
+**Automatically Included (No Need to Add):**
+- `spring-boot-starter-test` - Included in every Spring Boot project by default
+- `jackson-databind` - Included with Spring Web for JSON serialization
+
+**Compatibility Notes:**
+- Spring Boot 3.5.9 automatically manages compatible versions for all dependencies
+- Spring Kafka v3.1.x+ is Java 21 compatible
+- Redis uses Lettuce client v6.3.x+ (Java 21 compatible)
+- All listed libraries are Java 21 (LTS) compatible
 
 ### API Contract (Java)
 * **Endpoint:** `POST /v0/sms/send`
