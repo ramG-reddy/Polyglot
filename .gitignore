@@ -1,0 +1,152 @@
+# Polyglot SMS Service - Git Ignore
+
+### Java/Maven ###
+JavaSender/target/
+JavaSender/.mvn/
+JavaSender/mvnw
+JavaSender/mvnw.cmd
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.ctxt
+.mtj.tmp/
+hs_err_pid*
+replay_pid*
+
+### Go ###
+GoStore/vendor/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+### Spring Boot ###
+.spring-boot-devtools.properties
+spring-boot-*.log
+
+### Docker ###
+docker-compose.override.yml
+*.env.local
+
+### IDE - IntelliJ IDEA ###
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+.idea_modules/
+
+### IDE - VS Code ###
+.vscode/
+*.code-workspace
+.history/
+
+### IDE - Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders
+
+### IDE - NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### OS - macOS ###
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+### OS - Windows ###
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+### OS - Linux ###
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+### Logs ###
+logs/
+*.log
+log/
+*.log.*
+
+### Environment Variables ###
+.env
+.env*.local
+
+### Secrets ###
+secrets/
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+
+### Build Artifacts ###
+build/
+dist/
+*.snap
+
+### Temporary Files ###
+temp/
+tmp/
+*.tmp
+*.temp
+
+### Coverage & Testing ###
+coverage/
+*.coverprofile
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+.java-version
+
+### Database ###
+*.db
+*.sqlite
+*.sqlite3
+
+### Redis Dumps ###
+dump.rdb
+
+### MongoDB ###
+data/db/
+mongo-data/
+
+### Misc ###
+node_modules/
+.sass-cache/
+*.pid
+*.seed
+*.pid.lock
+.DS_Store
