@@ -1,0 +1,46 @@
+# Go build output
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Go modules cache (will be downloaded in container)
+vendor/
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Logs
+*.log
+logs/
+
+# Documentation (not needed in container)
+*.md
+README.md
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# Temporary files
+*.tmp
+*~
+
+# Go workspace files
+go.work
+go.work.sum

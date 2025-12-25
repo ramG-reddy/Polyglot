@@ -1,0 +1,45 @@
+# Maven build output
+target/
+*.class
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.settings/
+.project
+.classpath
+
+# Maven wrapper (included in image)
+.mvn/wrapper/maven-wrapper.jar
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Logs
+*.log
+logs/
+
+# Documentation (not needed in container)
+*.md
+README.md
+
+# Test files (already in target/)
+src/test/
+
+# Docker files
+Dockerfile
+.dockerignore
+
+# Temporary files
+*.tmp
+*.swp
+*~
