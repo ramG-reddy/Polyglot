@@ -27,16 +27,16 @@
 ## Phase 2: Java SMS Sender Service Implementation
 
 ### 2.1 Configuration
-- [ ] Create `src/main/resources/application.yml`
-- [ ] Configure Spring Boot properties (server port 8080)
-- [ ] Configure Kafka bootstrap servers (kafka:9092)
-- [ ] Configure Redis host/port (redis:6379)
-- [ ] Set application name `sms-sender`
+- [x] Create `src/main/resources/application.yml`
+- [x] Configure Spring Boot properties (server port 8080)
+- [x] Configure Kafka bootstrap servers (kafka:9092)
+- [x] Configure Redis host/port (redis:6379)
+- [x] Set application name `sms-sender`
 
 ### 2.2 Models & Data Structures
-- [ ] Create `SmsRequest` model (phoneNumber, message)
-- [ ] Create `SmsResponse` model (status, message, timestamp)
-- [ ] Create `KafkaEvent` model for Kafka messages
+- [x] Create `SmsRequest` model (phoneNumber, message)
+- [x] Create `SmsResponse` model (status, message, timestamp)
+- [x] Create `KafkaEvent` model for Kafka messages
 
 ### 2.3 Redis Integration
 - [ ] Create `RedisConfig` bean configuration

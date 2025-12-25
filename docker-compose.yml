@@ -104,7 +104,7 @@ services:
       SPRING_KAFKA_BOOTSTRAP_SERVERS: ${KAFKA_ADVERTISED_HOST:-kafka}:9092
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: ${REDIS_PORT:-6379}
-      SERVER_PORT: 8080
+      SERVER_PORT: ${JAVA_SERVICE_PORT:-8080}
     networks:
       - polyglot-network
     healthcheck:
@@ -128,7 +128,7 @@ services:
     ports:
       - "${GO_SERVICE_PORT:-8090}:8090"
     environment:
-      SERVER_PORT: 8090
+      SERVER_PORT: ${GO_SERVICE_PORT:-8090}
       MONGO_URI: mongodb://${MONGO_ROOT_USERNAME:-admin}:${MONGO_ROOT_PASSWORD:-admin123}@mongodb:27017
       MONGO_DATABASE: ${MONGO_DATABASE:-sms_store}
       KAFKA_BROKERS: ${KAFKA_ADVERTISED_HOST:-kafka}:9092
