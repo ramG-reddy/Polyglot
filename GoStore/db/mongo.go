@@ -63,8 +63,31 @@ func CreateIndexes() error {
 	log.Println("Creating MongoDB indexes...")
 
 	collection := Database.Collection(SMSRecordsCollection)
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 30*time.Second)
 	defer cancel()
+
+	// First, drop all existing indexes except _id
+	indexView := collection.Indexes()
+	cursor, err := indexView.List(ctx)
+	if err != nil {
+		log.Printf("Warning: Failed to list indexes: %v", err)
+	} else {
+		var existingIndexes []bson.M
+		if err = cursor.All(ctx, &existingIndexes); err != nil {
+			log.Printf("Warning: Failed to decode indexes: %v", err)
+		} else {
+			for _, idx := range existingIndexes {
+				indexName := idx["name"].(string)
+				// Don't drop the default _id index
+				if indexName != "_id_" {
+					log.Printf("Dropping existing index: %s", indexName)
+					if _, err := indexView.DropOne(ctx, indexName); err != nil {
+						log.Printf("Warning: Failed to drop index %s: %v", indexName, err)
+					}
+				}
+			}
+		}
+	}
 
 	// Define indexes
 	indexes := []mongo.IndexModel{

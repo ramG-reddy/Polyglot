@@ -85,7 +85,6 @@ services:
       - polyglot-network
     volumes:
       - mongodb-data:/data/db
-      - mongodb-config:/data/configdb
       - ./mongo-init:/docker-entrypoint-initdb.d:ro
     restart: unless-stopped
     healthcheck:
