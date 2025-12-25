@@ -39,16 +39,16 @@
 - [x] Create `KafkaEvent` model for Kafka messages
 
 ### 2.3 Redis Integration
-- [ ] Create `RedisConfig` bean configuration
-- [ ] Create `BlockListService` for checking Redis `blocked_users` key
-- [ ] Implement startup logic to populate Redis with dummy blocked users
-- [ ] Add logging for block list checks
+- [x] Create `RedisConfig` bean configuration
+- [x] Create `BlockListService` for checking Redis `blocked_users` key
+- [x] Implement startup logic to populate Redis with dummy blocked users
+- [x] Add logging for block list checks
 
 ### 2.4 Kafka Integration
-- [ ] Create `KafkaProducerConfig` bean
-- [ ] Create `SmsKafkaProducer` service class
-- [ ] Configure Kafka topic: `sms.events`
-- [ ] Implement message serialization to JSON
+- [x] Create `KafkaProducerConfig` bean
+- [x] Create `SmsKafkaProducer` service class
+- [x] Configure Kafka topic: `sms.events`
+- [x] Implement message serialization to JSON
 
 ### 2.5 REST API & Business Logic
 - [ ] Create `SmsController` for `POST /v0/sms/send` endpoint

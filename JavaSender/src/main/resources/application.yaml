@@ -45,7 +45,7 @@ logging:
 # Application-specific Configuration
 app:
   kafka:
-    topic: sms.events
+    topic: ${SPRING_KAFKA_TOPIC:sms.events}
   redis:
     blocklist-key: blocked_users
   mock-vendor:
